@@ -1,0 +1,43 @@
+#!/bin/bash
+
+# List of API sections
+directories=(
+    "product"
+    "category"
+    "product-image"
+    "category-image"
+    "address"
+    "auth"
+    "user"
+    "order"
+    "order-Item"
+    "payment"
+    "cart"
+    "cart-item"
+    "wishlist"
+    "review"
+    "review-image"
+    "shipping"
+    "seller"
+    "seller-products"
+    "notification"
+    "faq"
+    "support"
+    "subscription"
+    "discount"
+)
+ext="rs"
+ext1="ts"
+# Create directories
+for dir in "${directories[@]}"; do
+    echo "Created directory: $dir/"
+  mkdir -p "$dir/dto"
+    # Generate Rust module files
+    touch "$dir/dto/${dir}-create-dto.${ext1}"
+    touch  "$dir/dto/${dir}-update-dto.${ext1}"
+    touch  "$dir/dto/${dir}-dto.${ext1}"
+
+    echo "  Created Rust module files in: $dir/"
+done
+
+echo "All directories and Rust module files created successfully!"

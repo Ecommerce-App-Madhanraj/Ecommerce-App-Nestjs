@@ -1,0 +1,53 @@
+#!/bin/bash
+
+# List of API sections
+directories=(
+    "Product"
+    "Category"
+    "ProductImage"
+    "CategoryImage"
+    "Address"
+    "Auth"
+    "User"
+    "Order"
+    "OrderItem"
+    "Payment"
+    "Cart"
+    "CartItem"
+    "Wishlist"
+    "Review"
+    "Review Image"
+    "Shipping"
+    "Seller"
+    "SellerProducts"
+    "Notification"
+    "Faq"
+    "Support"
+    "Subscription"
+    "Discount"
+)
+ext="java"
+# Create directories
+for dir in "${directories[@]}"; do
+    # mkdir -p "$dir"  # Create module directory
+    echo "Created directory: $dir/"
+    nest g module "$dir"
+    nest g controller "$dir"
+    nest g service "$dir"
+
+    # Generate Rust module files
+    # mkdir -p "$dir/dto/"
+    # touch "$dir/dto/${dir}CreateDto.${ext}"
+    # touch "$dir/dto/${dir}UpdateDto.${ext}"
+    # touch "$dir/dto/${dir}Dto.${ext}"
+
+    # touch "$dir/${dir}Mapper.${ext}"
+    # touch "$dir/${dir}Controller.${ext}"
+    # touch "$dir/${dir}Service.${ext}"
+    # touch "$dir/${dir}Model.${ext}"
+    # touch "$dir/${dir}Repository.${ext}"
+
+    echo "  Created Rust module files in: $dir/"
+done
+
+echo "All directories and Rust module files created successfully!"
